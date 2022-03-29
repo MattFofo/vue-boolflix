@@ -1,9 +1,9 @@
 <template>
   <header>
     <h1>BOOLFLIX</h1>
-    <form @submit.prevent="" action="">
+    <form @submit.prevent="$emit('search-init', strSearchFromUser)" action="">
       <label for="btn-search">
-        <input type="text" name="btn-search" id="btn-search">
+        <input v-model="strSearchFromUser" type="text" name="btn-search" id="btn-search">
       </label>
       <button>CERCA</button>
     </form>
@@ -13,6 +13,11 @@
 <script>
 export default {
   name: 'HeaderFlix',
+  data() {
+    return {
+      strSearchFromUser: '',
+    };
+  },
 };
 </script>
 
