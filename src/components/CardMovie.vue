@@ -4,10 +4,12 @@
       <img :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.backdrop_path"
       :alt="movieFiltered.title"
       class="img-fluid">
-      <h1>{{ movieFiltered.title }}</h1>
+      <h3>{{ movieFiltered.title }}</h3>
       <flag :iso="formattingStrLang(movieFiltered.original_language)" />
       <div>Lingua Originale: {{ movieFiltered.original_language }}</div>
-      <div>Titolo Originale: {{ movieFiltered.original_title }}</div>
+      <div v-if="movieFiltered.original_title != movieFiltered.title">
+        Titolo Originale: {{ movieFiltered.original_title }}
+      </div>
       <div>Voto: {{ movieFiltered.vote_average }}</div>
     </div>
   </div>
@@ -35,6 +37,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped lang="scss">
+  .card-movie {
+    height: 400px;
+  }
 </style>
