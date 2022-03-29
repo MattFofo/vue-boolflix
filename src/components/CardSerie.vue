@@ -1,11 +1,15 @@
 <template>
-  <div class="card-movie">
-    <img :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.backdrop_path" :alt="serieFiltered.name">
-    <h1>{{ serieFiltered.name }}</h1>
-    <flag :iso="formattingStrLang(serieFiltered.original_language)" />
-    <div>Lingua Originale: {{ serieFiltered.original_language }}</div>
-    <div>Titolo Originale: {{ serieFiltered.original_name }}</div>
-    <div>Voto: {{ serieFiltered.vote_average }}</div>
+  <div class="col">
+    <div class="card-movie">
+      <img :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.backdrop_path"
+      :alt="serieFiltered.name"
+      class="img-fluid">
+      <h1>{{ serieFiltered.name }}</h1>
+      <flag :iso="formattingStrLang(serieFiltered.original_language)" />
+      <div>Lingua Originale: {{ serieFiltered.original_language }}</div>
+      <div>Titolo Originale: {{ serieFiltered.original_name }}</div>
+      <div>Voto: {{ serieFiltered.vote_average }}</div>
+    </div>
   </div>
 </template>
 

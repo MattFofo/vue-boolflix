@@ -2,17 +2,23 @@
   <main>
     <div v-if="emptySearchControl == true">Inserisci un titolo per la ricerca</div>
     <div v-if="missingData == true">Non sono riuscito a prendere i dati dal server</div>
-    <div class="movies">
-      <h2>MOVIES</h2>
-      <CardMovie
-      :movie-filtered="movie"
-      v-for="movie in moviesFiltered" :key="movie.id"/>
-    </div>
-    <div class="series">
-      <h2>SERIES</h2>
-      <CardSerie
-      :serie-filtered="serie"
-      v-for="serie in seriesFiltered" :key="serie.id"/>
+    <div class="container">
+      <div class="movies">
+        <h2>MOVIES</h2>
+        <div class="row py-5">
+            <CardMovie
+            :movie-filtered="movie"
+            v-for="movie in moviesFiltered" :key="movie.id"/>
+        </div>
+      </div>
+      <div class="series">
+        <h2>SERIES</h2>
+        <div class="row py-5">
+          <CardSerie
+          :serie-filtered="serie"
+          v-for="serie in seriesFiltered" :key="serie.id"/>
+        </div>
+      </div>
     </div>
   </main>
 </template>

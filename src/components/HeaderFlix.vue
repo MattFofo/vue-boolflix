@@ -1,12 +1,21 @@
 <template>
-  <header>
-    <h1>BOOLFLIX</h1>
-    <form @submit.prevent="$emit('search-init', strSearchFromUser)" action="">
-      <label for="btn-search">
-        <input v-model="strSearchFromUser" type="text" name="btn-search" id="btn-search">
-      </label>
-      <button>CERCA</button>
-    </form>
+  <header class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <h1 class="text-danger">BOOLFLIX</h1>
+        </div>
+        <div class="col-6">
+          <form @submit.prevent="$emit('search-init', strSearchFromUser)" action=""
+          class="h-100 d-flex justify-content-end align-items-center">
+            <label for="btn-search">
+              <input v-model="strSearchFromUser" type="text" name="btn-search" id="btn-search">
+            </label>
+            <button>CERCA</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </header>
 </template>
 
