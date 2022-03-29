@@ -1,5 +1,7 @@
 <template>
-  <main>Main
+  <main>
+    <div v-if="emptySearchControl == true">Inserisci un titolo per la ricerca</div>
+    <div v-if="missingData == true">Non sono riuscito a prendere i dati dal server</div>
     <CardMovie :movie-filtered="movie"
     v-for="movie in moviesFiltered" :key="movie.id"/>
   </main>
@@ -15,6 +17,8 @@ export default {
   },
   props: {
     moviesFiltered: Array,
+    missingData: Boolean,
+    emptySearchControl: Boolean,
   },
 };
 </script>
