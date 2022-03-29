@@ -5,18 +5,28 @@
       :alt="movieFiltered.title"
       class="img-fluid">
       <h3>{{ movieFiltered.title }}</h3>
-      <flag :iso="formattingStrLang(movieFiltered.original_language)" />
-      <div>Lingua Originale: {{ movieFiltered.original_language }}</div>
+      <div>
+        Lingua Originale:
+        <flag style="font-size:1rem" :iso="formattingStrLang(movieFiltered.original_language)" />
+      </div>
       <div v-if="movieFiltered.original_title != movieFiltered.title">
         Titolo Originale: {{ movieFiltered.original_title }}
       </div>
-      <div>Voto: {{ movieFiltered.vote_average }}</div>
+      <div>
+        Voto: {{ movieFiltered.vote_average }}
+        <font-awesome-icon icon="fa-regular fa-star" />
+        <font-awesome-icon icon="fa-regular fa-star" />
+        <font-awesome-icon icon="fa-regular fa-star" />
+        <font-awesome-icon icon="fa-regular fa-star" />
+        <font-awesome-icon icon="fa-solid fa-star" />
+        </div>
     </div>
   </div>
 
 </template>
 
 <script>
+
 export default {
   name: 'CardMovie',
   props: {
@@ -38,7 +48,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .card-movie {
-    height: 400px;
-  }
+
 </style>

@@ -11,12 +11,8 @@
 
 <script>
 import axios from 'axios';
-import Vue from 'vue';
-import FlagIcon from 'vue-flag-icon';
 import HeaderFlix from './components/HeaderFlix.vue';
 import MainFlix from './components/MainFlix.vue';
-
-Vue.use(FlagIcon);
 
 export default {
   name: 'App',
