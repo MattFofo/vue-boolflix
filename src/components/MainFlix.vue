@@ -5,6 +5,7 @@
     <div class="container">
       <div class="movies">
         <h2>MOVIES</h2>
+        <div v-if="moviesFiltered == ''">nessun risultato</div>
         <div class="row py-5">
             <CardMovie
             :movie-filtered="movie"
@@ -13,6 +14,7 @@
       </div>
       <div class="series">
         <h2>SERIES</h2>
+        <div v-if="seriesFiltered == ''">nessun risultato</div>
         <div class="row py-5">
           <CardSerie
           :serie-filtered="serie"
