@@ -14,12 +14,12 @@
       </div>
       <div>
         Voto: {{ movieFiltered.vote_average }}
-        <font-awesome-icon icon="fa-regular fa-star" />
-        <font-awesome-icon icon="fa-regular fa-star" />
-        <font-awesome-icon icon="fa-regular fa-star" />
-        <font-awesome-icon icon="fa-regular fa-star" />
-        <font-awesome-icon icon="fa-solid fa-star" />
-        </div>
+        <font-awesome-icon :icon="movieRating >= 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+        <font-awesome-icon :icon="movieRating >= 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+        <font-awesome-icon :icon="movieRating >= 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+        <font-awesome-icon :icon="movieRating >= 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+        <font-awesome-icon :icon="movieRating >= 5 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+      </div>
     </div>
   </div>
 
@@ -31,6 +31,11 @@ export default {
   name: 'CardMovie',
   props: {
     movieFiltered: Object,
+  },
+  data() {
+    return {
+      movieRating: this.movieFiltered.vote_average * 0.5,
+    };
   },
   methods: {
     formattingStrLang(str) {
