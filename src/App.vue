@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderFlix @search-init="(strSearchFromUser) => searchQuery(strSearchFromUser)"/>
-    <MainFlix />
+    <MainFlix :movies-filtered="responseMoviesFiltered"/>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     searchQuery(strSearch) {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=5c6ab89fe79676535107954e4924807b&query=${strSearch}`)
         .then((response) => {
-          this.responseMoviesFiltered = response;
+          this.responseMoviesFiltered = response.data.results;
         });
     },
   },

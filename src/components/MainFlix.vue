@@ -1,6 +1,7 @@
 <template>
   <main>Main
-    <CardMovie />
+    <CardMovie :movie-filtered="movie"
+    v-for="movie in moviesFiltered" :key="movie.id"/>
   </main>
 </template>
 
@@ -11,6 +12,9 @@ export default {
   name: 'MainFlix',
   components: {
     CardMovie,
+  },
+  props: {
+    moviesFiltered: Array,
   },
 };
 </script>
