@@ -1,6 +1,6 @@
 <template>
   <div class="card-movie">
-    <img :src="'https://image.tmdb.org/t/p/w500' + movieFiltered.backdrop_path" :alt="movieFiltered.title">
+    <img :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.backdrop_path" :alt="movieFiltered.title">
     <h1>{{ movieFiltered.title }}</h1>
     <flag :iso="formattingStrLang(movieFiltered.original_language)" />
     <div>Lingua Originale: {{ movieFiltered.original_language }}</div>
@@ -15,17 +15,14 @@ export default {
   props: {
     movieFiltered: Object,
   },
-  data() {
-    return {
-      movieLang: '',
-    };
-  },
   methods: {
     formattingStrLang(str) {
       if (str === 'en') {
         return 'us';
       } if (str === 'ja') {
         return 'jp';
+      } if (str === 'ko') {
+        return 'kr';
       }
       return this.movieFiltered.original_language;
     },
@@ -36,10 +33,3 @@ export default {
 <style>
 
 </style>
-switch (str) {
-  case str === 'en':
-    return 'us';
-    [break;]
-  case str === 'ja':
-    return 'jp';
-    [break;]
