@@ -4,7 +4,8 @@
     <MainFlix
     :movies-filtered="responseMoviesFiltered"
     :series-filtered="responseSeriesFiltered"
-    :missing-data="failedToRetrieveData" :empty-search-control="emptySearch"/>
+    :missing-data="failedToRetrieveData"
+    :empty-search-control="emptySearch"/>
   </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
       responseMoviesFiltered: null,
       failedToRetrieveData: false,
       emptySearch: false,
+      searched: false,
     };
   },
   methods: {

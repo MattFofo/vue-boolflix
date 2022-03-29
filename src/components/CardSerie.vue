@@ -1,13 +1,15 @@
 <template>
-  <div class="col">
+  <div class="col-3">
     <div class="card-movie">
-      <img :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.backdrop_path"
+      <img :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path"
       :alt="serieFiltered.name"
       class="img-fluid">
       <h1>{{ serieFiltered.name }}</h1>
       <flag :iso="formattingStrLang(serieFiltered.original_language)" />
       <div>Lingua Originale: {{ serieFiltered.original_language }}</div>
-      <div>Titolo Originale: {{ serieFiltered.original_name }}</div>
+      <div v-if="serieFiltered.original_name != serieFiltered.name">
+        Titolo Originale: {{ serieFiltered.original_name }}
+      </div>
       <div>Voto: {{ serieFiltered.vote_average }}</div>
     </div>
   </div>
@@ -34,6 +36,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="col-3">
     <div class="card-movie">
-      <img :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.backdrop_path"
+      <img :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path"
       :alt="movieFiltered.title"
       class="img-fluid">
       <h3>{{ movieFiltered.title }}</h3>
