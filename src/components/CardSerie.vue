@@ -1,9 +1,13 @@
 <template>
   <div class="col-6 col-sm-4 col-md-4 col-lg-3">
     <div class="card card-serie">
-      <img :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path"
-      :alt="serieFiltered.name"
-      class="img-fluid">
+      <img
+      :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
+      ? 'https://picsum.photos/200/300'
+      : 'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path"
+      :alt="serieFiltered.title"
+      class="img-fluid"
+      >
       <h1>{{ serieFiltered.name }}</h1>
       <div>
         Lingua Originale:

@@ -1,9 +1,13 @@
 <template>
   <div class="col-6 col-sm-4 col-md-4 col-lg-3">
     <div class="card card-movie">
-      <img :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path"
+      <img
+      :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
+      ? 'https://picsum.photos/200/300'
+      : 'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path"
       :alt="movieFiltered.title"
-      class="img-fluid">
+      class="img-fluid"
+      >
       <h3>{{ movieFiltered.title }}</h3>
       <div>
         Lingua Originale:
