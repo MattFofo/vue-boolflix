@@ -13,7 +13,7 @@
           >
         </div>
         <!-- card back -->
-        <div class="card_back position-absolute styled-scrollbars">
+        <div class="card_back position-absolute styled-scrollbars bg-dark">
           <!-- title -->
           <h2 class="title">{{ movieFiltered.title }}</h2>
           <!-- language -->
