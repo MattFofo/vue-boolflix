@@ -6,7 +6,7 @@
         <div class="card_front">
           <img
           :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
-          ? 'https://picsum.photos/342'
+          ? 'https://picsum.photos/342/500'
           : 'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path"
           :alt="movieFiltered.title"
           class="img-fluid"

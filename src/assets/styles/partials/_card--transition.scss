@@ -28,11 +28,22 @@
       background-color: dodgerblue;
       color: white;
       transform: rotateY(180deg);
+      .title {
+        transform: translateX(300px);
+        visibility: hidden;
+      }
     }
   }
   .card_my:hover .card_content{
     transform: rotateY(180deg);
-    transition-property: all;
+    transition-property: transform;
     transition-duration: .7s;
     transition-timing-function: ease-in-out;
+  }
+  .card_my:hover .title {
+    transform: translateX(0);
+    transition-property: transform;
+    transition-duration: .7s;
+    transition-timing-function: ease-in-out;
+    visibility: visible;
   }
