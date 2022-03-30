@@ -68,5 +68,6 @@ export default {
 
 <style lang="scss">
   $primary: #303030;
-  @import 'bootstrap'
+  @import 'bootstrap';
+  @import './assets/styles/style.scss';
 </style>

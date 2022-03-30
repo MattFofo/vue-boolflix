@@ -8,7 +8,7 @@
       :alt="serieFiltered.title"
       class="img-fluid"
       >
-      <h1>{{ serieFiltered.name }}</h1>
+      <h2>{{ serieFiltered.name }}</h2>
       <div>
         Lingua Originale:
         <lang-flag v-show="!controlFlagsIncluded(serieFiltered.original_language)"
