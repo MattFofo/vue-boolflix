@@ -22,6 +22,8 @@ export default {
   },
   data() {
     return {
+      apiUrl: 'https://api.themoviedb.org/3/',
+      apiKey: '5c6ab89fe79676535107954e4924807b',
       responseSeriesFiltered: null,
       responseMoviesFiltered: null,
       failedToRetrieveData: false,
@@ -30,30 +32,32 @@ export default {
     };
   },
   methods: {
+    axiosCall(searchType, objParams) {
+      axios.get(`${this.apiUrl}search/${searchType}`, {
+        params: objParams,
+      })
+        .then((response) => {
+          if (searchType === 'movie') {
+            this.responseMoviesFiltered = response.data.results;
+          } else {
+            this.responseSeriesFiltered = response.data.results;
+          }
+        })
+        .catch(() => {
+          this.failedToRetrieveData = true;
+        });
+    },
     searchQuery(strSearch) {
-      this.emptySearch = false;
-      this.failedToRetrieveData = false;
-      this.getFilteredMovies(strSearch);
-      this.getFilteredSeries(strSearch);
-    },
-    getFilteredMovies(str) {
-      if (str !== '') {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=5c6ab89fe79676535107954e4924807b&language=it_IT&query=${str}`)
-          .then((response) => { this.responseMoviesFiltered = response.data.results; })
-          .catch(() => {
-            this.failedToRetrieveData = true;
-          });
-      } else {
-        this.emptySearch = true;
-      }
-    },
-    getFilteredSeries(str) {
-      if (str !== '') {
-        axios.get(`https://api.themoviedb.org/3/search/tv?api_key=5c6ab89fe79676535107954e4924807b&query=${str}`)
-          .then((response) => { this.responseSeriesFiltered = response.data.results; })
-          .catch(() => {
-            this.failedToRetrieveData = true;
-          });
+      // this.emptySearch = false;
+      // this.failedToRetrieveData = false;
+      if (strSearch !== '') {
+        const objParams = {
+          api_key: this.apiKey,
+          language: 'it-IT',
+          query: strSearch,
+        };
+        this.axiosCall('movie', objParams);
+        this.axiosCall('tv', objParams);
       } else {
         this.emptySearch = true;
       }
