@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import '../assets/styles/partials/variables';
   // button:active {
   //   background-color: black;
   //   color: white;
@@ -45,12 +46,12 @@ export default {
   // }
   button {
   position: relative;
-  background-color: #04AA6D;
+  background-color: $bg_btn_dark;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-duration: 0.5s;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
@@ -58,15 +59,15 @@ export default {
 
 button:after {
   content: "";
-  background: #90EE90;
+  background: $bg_secondary;
   display: block;
   position: absolute;
   padding-top: 300%;
   padding-left: 350%;
-  margin-left: -20px!important;
+  margin-left: -100px!important;
   margin-top: -120%;
   opacity: 0;
-  transition: all 0.8s
+  transition: all 0.9s
 }
 
 button:active:after {
@@ -75,4 +76,11 @@ button:active:after {
   opacity: 1;
   transition: 0s
 }
+
+button:focus {
+  box-shadow: none;
+  background-color: $bg_btn_dark;
+  color: white;
+}
+
 </style>

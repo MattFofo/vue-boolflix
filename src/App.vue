@@ -48,8 +48,8 @@ export default {
         });
     },
     searchQuery(strSearch) {
-      // this.emptySearch = false;
-      // this.failedToRetrieveData = false;
+      this.emptySearch = false;
+      this.failedToRetrieveData = false;
       if (strSearch !== '') {
         const objParams = {
           api_key: this.apiKey,
