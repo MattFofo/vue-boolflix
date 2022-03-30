@@ -1,19 +1,23 @@
 .card_my {
     background-color: transparent;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    -webkit-perspective: 1000px; 
     .card_content {
       position: relative;
       width: 100%;
       height: 100%;
       transition: transform 0.8s;
       transform-style: preserve-3d;
+      // safari
+      -webkit-transition: transform 0.8s;
+      -webkit-transform-style: preserve-3d;
     }
-    .card_top, .card_back {
-      position: absolute;
+    .card_front, .card_back {
       width: 100%;
       height: 100%;
       -webkit-backface-visibility: hidden; /* Safari */
       backface-visibility: hidden;
+      visibility:visible;
     }
     .card_front {
       background-color: #bbb;
@@ -26,16 +30,23 @@
       right: 0;
       bottom: 0;
       color: white;
-      transform: rotateY(180deg);
       overflow-y: auto;
       overflow-x: hidden;
       padding: 1em;
+      transform: rotateY(180deg);
+      //safari
+      -webkit-transform: rotateY(180deg);
       .title {
-        transform: translateX(300px);
         visibility: hidden;
+        transform: translateX(300px);
         transition-property: transform, visibility;
         transition-duration: .7s;
         transition-timing-function: ease-in-out;
+        //safari
+        -webkit-transform: translateX(300px);
+        -webkit-transition-property: transform, visibility;
+        -webkit-transition-duration: .7s;
+        -webkit-transition-timing-function: ease-in-out;
       }
     }
   }
@@ -44,6 +55,11 @@
     transition-property: transform;
     transition-duration: .6s;
     transition-timing-function: ease-in-out;
+    //safari
+    -webkit-transform: rotateY(180deg);
+    -webkit-transition-property: transform;
+    -webkit-transition-duration: .6s;
+    -webkit-transition-timing-function: ease-in-out;
   }
   .card_my:hover .title {
     transform: translateX(0);
