@@ -11,10 +11,11 @@
       <h1>{{ serieFiltered.name }}</h1>
       <div>
         Lingua Originale:
-        <lang-flag :squared="false" :iso="serieFiltered.original_language" />
-        <div v-show="controlFlagsIncluded(serieFiltered.original_language)">
+        <lang-flag v-show="!controlFlagsIncluded(serieFiltered.original_language)"
+        :squared="false" :iso="serieFiltered.original_language" />
+        <span v-show="controlFlagsIncluded(serieFiltered.original_language)">
           {{ serieFiltered.original_language }}
-        </div>
+        </span>
       </div>
       <div>
         Paese produzione:

@@ -63,5 +63,6 @@ export default {
 </script>
 
 <style lang="scss">
+  $primary: #303030;
   @import 'bootstrap'
 </style>

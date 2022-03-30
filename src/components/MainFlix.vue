@@ -1,5 +1,6 @@
 <template>
-  <main>
+  <main class="bg-primary"
+  :class="moviesFiltered == null || seriesFiltered == null ? 'vh-100' : 'h-100' ">
     <div class="alert-miss-search-input d-flex justify-content-center align-items-center"
     :class="emptySearchControl == true || moviesFiltered == null ? 'visible' : 'invisible height0'">
       Inserisci un titolo per la ricerca

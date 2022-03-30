@@ -11,10 +11,11 @@
       <h3>{{ movieFiltered.title }}</h3>
       <div>
         Lingua Originale:
-        <lang-flag :squared="false" :iso="movieFiltered.original_language" />
-        <div v-show="controlFlagsIncluded(movieFiltered.original_language) ">
+        <lang-flag v-show="!controlFlagsIncluded(movieFiltered.original_language)"
+        :squared="false" :iso="movieFiltered.original_language" />
+        <span v-show="controlFlagsIncluded(movieFiltered.original_language) ">
           {{ movieFiltered.original_language }}
-        </div>
+        </span>
       </div>
       <div v-if="movieFiltered.original_title != movieFiltered.title">
         Titolo Originale: {{ movieFiltered.original_title }}
