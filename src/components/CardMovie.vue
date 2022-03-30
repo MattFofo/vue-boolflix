@@ -1,13 +1,16 @@
 <template>
-  <div class="col-3">
-    <div class="card-movie">
+  <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+    <div class="card card-movie">
       <img :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path"
       :alt="movieFiltered.title"
       class="img-fluid">
       <h3>{{ movieFiltered.title }}</h3>
       <div>
         Lingua Originale:
-        <flag style="font-size:1rem" :iso="formattingStrLang(movieFiltered.original_language)" />
+        <lang-flag :squared="false" :iso="movieFiltered.original_language" />
+        <div v-show="controlFlagsIncluded(movieFiltered.original_language) ">
+          {{ movieFiltered.original_language }}
+        </div>
       </div>
       <div v-if="movieFiltered.original_title != movieFiltered.title">
         Titolo Originale: {{ movieFiltered.original_title }}
@@ -35,18 +38,53 @@ export default {
   data() {
     return {
       movieRating: this.movieFiltered.vote_average * 0.5,
+      arrISO631Flags: [
+        'ar',
+        'am',
+        'az',
+        'be',
+        'bn',
+        'bg',
+        'zh',
+        'ca',
+        'cs',
+        'en',
+        'et',
+        'fr',
+        'de',
+        'ha',
+        'hi',
+        'hu',
+        'it',
+        'ja',
+        'jv',
+        'km',
+        'ko',
+        'lv',
+        'ms',
+        'mr',
+        'fa',
+        'pl',
+        'pt',
+        'ro',
+        'ru',
+        'es',
+        'sw',
+        'ta',
+        'te',
+        'th',
+        'tr',
+        'uz',
+        'vi',
+      ],
     };
   },
   methods: {
-    formattingStrLang(str) {
-      if (str === 'en') {
-        return 'us';
-      } if (str === 'ja') {
-        return 'jp';
-      } if (str === 'ko') {
-        return 'kr';
+    controlFlagsIncluded(str) {
+      if (!this.arrISO631Flags.includes(str)) {
+        return true;
       }
-      return this.movieFiltered.original_language;
+      return false;
     },
   },
 };

@@ -1,13 +1,20 @@
 <template>
-  <div class="col-3">
-    <div class="card-movie">
+  <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+    <div class="card card-serie">
       <img :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path"
       :alt="serieFiltered.name"
       class="img-fluid">
       <h1>{{ serieFiltered.name }}</h1>
       <div>
         Lingua Originale:
-        <flag style="font-size:1rem" :iso="formattingStrLang(serieFiltered.original_language)" />
+        <lang-flag :squared="false" :iso="serieFiltered.original_language" />
+        <div v-show="controlFlagsIncluded(serieFiltered.original_language)">
+          {{ serieFiltered.original_language }}
+        </div>
+      </div>
+      <div>
+        Paese produzione:
+        <flag :squared="false" style="font-size:1rem" :iso="serieFiltered.origin_country[0]" />
       </div>
       <div v-if="serieFiltered.original_name != serieFiltered.name">
         Titolo Originale: {{ serieFiltered.original_name }}
@@ -33,18 +40,53 @@ export default {
   data() {
     return {
       serieRating: this.serieFiltered.vote_average * 0.5,
+      arrISO631Flags: [
+        'ar',
+        'am',
+        'az',
+        'be',
+        'bn',
+        'bg',
+        'zh',
+        'ca',
+        'cs',
+        'en',
+        'et',
+        'fr',
+        'de',
+        'ha',
+        'hi',
+        'hu',
+        'it',
+        'ja',
+        'jv',
+        'km',
+        'ko',
+        'lv',
+        'ms',
+        'mr',
+        'fa',
+        'pl',
+        'pt',
+        'ro',
+        'ru',
+        'es',
+        'sw',
+        'ta',
+        'te',
+        'th',
+        'tr',
+        'uz',
+        'vi',
+      ],
     };
   },
   methods: {
-    formattingStrLang(str) {
-      if (str === 'en') {
-        return 'us';
-      } if (str === 'ja') {
-        return 'jp';
-      } if (str === 'ko') {
-        return 'kr';
+    controlFlagsIncluded(str) {
+      if (!this.arrISO631Flags.includes(str)) {
+        return true;
       }
-      return this.serieFiltered.original_language;
+      return false;
     },
   },
 };

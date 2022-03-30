@@ -9,9 +9,10 @@
           <form @submit.prevent="$emit('search-init', strSearchFromUser)" action=""
           class="h-100 d-flex justify-content-end align-items-center">
             <label for="btn-search">
-              <input v-model="strSearchFromUser" type="text" name="btn-search" id="btn-search">
+              <input v-model="strSearchFromUser" type="text" name="btn-search" id="btn-search"
+              placeholder="Inserisci un titolo...">
             </label>
-            <button>CERCA</button>
+            <button class="btn-light">CERCA</button>
           </form>
         </div>
       </div>

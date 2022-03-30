@@ -1,10 +1,13 @@
 <template>
   <main>
-    <div v-if="emptySearchControl == true">Inserisci un titolo per la ricerca</div>
+    <div class="alert-miss-search-input d-flex justify-content-center align-items-center"
+    :class="emptySearchControl == true || moviesFiltered == null ? 'visible' : 'invisible height0'">
+      Inserisci un titolo per la ricerca
+    </div>
     <div v-if="missingData == true">Non sono riuscito a prendere i dati dal server</div>
     <div class="container">
       <div class="movies">
-        <h2>MOVIES</h2>
+        <h2 v-show="moviesFiltered != null">MOVIES</h2>
         <div v-if="moviesFiltered == ''">nessun risultato</div>
         <div class="row py-5">
             <CardMovie
@@ -13,7 +16,7 @@
         </div>
       </div>
       <div class="series">
-        <h2>SERIES</h2>
+        <h2 v-show="seriesFiltered != null">SERIES</h2>
         <div v-if="seriesFiltered == ''">nessun risultato</div>
         <div class="row py-5">
           <CardSerie
@@ -44,6 +47,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+  .alert-miss-search-input {
+    height: 3rem;
+    background-color: lightblue;
+    transition-property: height, visibility;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+  }
+  .height0 {
+    height: 0;
+  }
 
 </style>

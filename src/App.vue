@@ -38,10 +38,8 @@ export default {
     },
     getFilteredMovies(str) {
       if (str !== '') {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=5c6ab89fe79676535107954e4924807b&query=${str}`)
-          .then((response) => {
-            this.responseMoviesFiltered = response.data.results;
-          })
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=5c6ab89fe79676535107954e4924807b&language=it_IT&query=${str}`)
+          .then((response) => { this.responseMoviesFiltered = response.data.results; })
           .catch(() => {
             this.failedToRetrieveData = true;
           });
@@ -52,9 +50,7 @@ export default {
     getFilteredSeries(str) {
       if (str !== '') {
         axios.get(`https://api.themoviedb.org/3/search/tv?api_key=5c6ab89fe79676535107954e4924807b&query=${str}`)
-          .then((response) => {
-            this.responseSeriesFiltered = response.data.results;
-          })
+          .then((response) => { this.responseSeriesFiltered = response.data.results; })
           .catch(() => {
             this.failedToRetrieveData = true;
           });
