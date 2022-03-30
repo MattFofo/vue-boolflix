@@ -1,5 +1,5 @@
 <template>
-  <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+  <div class="col-6 col-sm-4 col-md-4 col-lg-3 py-4">
     <div class="card_my">
       <div class="card_content position-relative">
         <!-- card front -->
@@ -13,7 +13,7 @@
           >
         </div>
         <!-- card back -->
-        <div class="card_back position-absolute">
+        <div class="card_back position-absolute styled-scrollbars">
           <!-- title -->
           <h2 class="title">{{ movieFiltered.title }}</h2>
           <!-- language -->
@@ -43,6 +43,7 @@
             <font-awesome-icon :icon="movieRating >= 5
               ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
           </div>
+          <div class="overview">{{ movieFiltered.overview }}</div>
         </div>
       </div>
     </div>
@@ -113,5 +114,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/styles/partials/card--transition.scss';
+  @import '../assets/styles/partials/card--transition.scss';
+  @import '../assets/styles/partials/scrollbar--style.scss';
 </style>

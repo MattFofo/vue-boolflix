@@ -28,22 +28,25 @@
       background-color: dodgerblue;
       color: white;
       transform: rotateY(180deg);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 1em;
       .title {
         transform: translateX(300px);
         visibility: hidden;
+        transition-property: transform, visibility;
+        transition-duration: .7s;
+        transition-timing-function: ease-in-out;
       }
     }
   }
   .card_my:hover .card_content{
     transform: rotateY(180deg);
     transition-property: transform;
-    transition-duration: .7s;
+    transition-duration: .6s;
     transition-timing-function: ease-in-out;
   }
   .card_my:hover .title {
     transform: translateX(0);
-    transition-property: transform;
-    transition-duration: .7s;
-    transition-timing-function: ease-in-out;
     visibility: visible;
   }
