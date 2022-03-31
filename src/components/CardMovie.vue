@@ -4,6 +4,7 @@
       <div class="card_content position-relative">
         <!-- card front -->
         <div class="card_front">
+          <!-- poster -->
           <img
           :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
           ? 'https://picsum.photos/342/500'
@@ -16,47 +17,40 @@
         <div class="card_back position-absolute styled-scrollbars bg-dark"
         @click="cardClicked = true" @keydown="cardClicked = !cardClicked"
         @mouseleave="cardClicked = false" @focusout="cardClicked = false"
-        :class="cardClicked ? 'overflowY-auto' : 'overflowY-hidden'">
+        :class="cardClicked ? 'overflowY-auto' : 'overflowY-hidden'"
+        >
           <!-- title -->
           <h2 class="title pb-3">{{ movieFiltered.title }}</h2>
           <!-- language -->
           <div class="lang pb-2">
             <span class="lang-text fw-bold">Lingua Originale: </span>
+            <!-- language flag -->
             <lang-flag v-show="!controlFlagsIncluded(movieFiltered.original_language)"
-            :squared="false" :iso="movieFiltered.original_language" />
+            :squared="false" :iso="movieFiltered.original_language"
+            />
+            <!-- control if missing flag -->
             <span v-show="controlFlagsIncluded(movieFiltered.original_language) ">
               {{ movieFiltered.original_language }}
             </span>
           </div>
           <!-- original title -->
           <div class="original_title pb-1"
-          v-if="movieFiltered.original_title != movieFiltered.title">
+          v-if="movieFiltered.original_title != movieFiltered.title"
+          >
             <span class="fw-bold">Titolo Originale: </span>
             <span> {{ movieFiltered.original_title }} </span>
           </div>
           <!-- rating -->
           <div class="rating pb-1">
+            <!-- dex rating -->
             <span class="fw-bold">Voto: </span>
             <span> {{ movieFiltered.vote_average }} </span>
+            <!-- stars -->
             <font-awesome-icon
-            :id="movieRating >= 1 ? 'gold-star1' : 'empty-star'"
-            :icon="movieRating >= 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'"
+            v-for="i in 5" :key="i"
+            :id="movieRating >= i ? `gold-star${i}` : 'empty-star'"
+            :icon="movieRating >= i ? 'fa-solid fa-star' : 'fa-regular fa-star'"
             />
-            <font-awesome-icon
-            :id="movieRating >= 2 ? 'gold-star2' : 'empty-star'"
-            :icon="movieRating >= 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-
-            <font-awesome-icon
-            :id="movieRating >= 3 ? 'gold-star3' : 'empty-star'"
-            :icon="movieRating >= 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-
-            <font-awesome-icon
-            :id="movieRating >= 4 ? 'gold-star4' : 'empty-star'"
-            :icon="movieRating >= 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-
-            <font-awesome-icon
-            :id="movieRating >= 5 ? 'gold-star5' : 'empty-star'"
-            :icon="movieRating >= 5 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
           </div>
           <!-- overview -->
           <div class="overview">
@@ -67,7 +61,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
