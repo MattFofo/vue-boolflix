@@ -3,7 +3,9 @@
     <div class="card_my">
       <div class="card_content position-relative">
         <!-- card front -->
-        <div class="card_front">
+        <div @mouseleave="resetScrollTop()"
+        @focusout="this.$refs.scroll.scrollTop = 0"
+        class="card_front">
           <!-- poster -->
           <img
           :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
@@ -14,7 +16,7 @@
           >
         </div>
         <!-- card back -->
-        <div class="card_back position-absolute styled-scrollbars bg-dark"
+        <div ref="scroll" class="card_back position-absolute styled-scrollbars bg-dark"
         @click="cardClicked = true" @keydown="cardClicked = !cardClicked"
         @mouseleave="cardClicked = false" @focusout="cardClicked = false"
         :class="cardClicked ? 'overflowY-auto' : 'overflowY-hidden'"
@@ -121,6 +123,11 @@ export default {
         return true;
       }
       return false;
+    },
+    resetScrollTop() {
+      if (this.cardClicked === false) {
+        this.$refs.scroll.scrollTop = 0;
+      }
     },
   },
 };

@@ -1,7 +1,7 @@
 #gold-star1 {
     color: $bg_btn_dark;
     transition-property: transform, color;
-    transition-delay: 1.5s;
+    transition-delay: 1s;
     transition-timing-function: ease-in;
   }
   .card_back:hover #gold-star1 {
@@ -10,8 +10,7 @@
   #gold-star2 {
   color: $bg_btn_dark;
   transition-property: transform, color;
-  transition-duration: .1s;
-  transition-delay: 1.7s;
+  transition-delay: 1.2s;
   transition-timing-function: ease-in;
   }
   .card_back:hover #gold-star2 {
@@ -20,7 +19,7 @@
     #gold-star3 {
   color: $bg_btn_dark;
   transition-property: transform, color;
-  transition-delay: 1.9s;
+  transition-delay: 1.3s;
   transition-timing-function: ease-in;
   }
   .card_back:hover #gold-star3 {
@@ -29,19 +28,22 @@
     #gold-star4 {
   color: $bg_btn_dark;
   transition-property: transform, color;
-  transition-delay: 2.1s;
+  transition-delay: 1.4s;
   transition-timing-function: ease-in;
+  transform: scale(1);
   }
   .card_back:hover #gold-star4 {
-    color: gold;
+    color: rgb(255, 236, 62);
+    transform: scale(1.1);
   }
     #gold-star5 {
   color: $bg_btn_dark;
   transition-property: transform, color;
-  transition-delay: 2.3s;
+  transition-delay: 1.5s;
   transition-timing-function: ease-in;
-  
+  transform: scale(1);
   }
   .card_back:hover #gold-star5 {
-    color: gold;
+    color: rgb(255, 236, 62);
+    transform: scale(1.1);
   }

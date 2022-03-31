@@ -6,11 +6,11 @@ button {
     text-align: center;
     -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
-    transition: border, box-shadow 0.6s;
+    transition: border, box-shadow;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
   }
   
   button:after {
@@ -33,14 +33,14 @@ button {
     transition: 0s
     }
     button:active {
-        box-shadow: 0px, 0px, 0px, 1px, white;
-        border: 1px solid white;
+        box-shadow: 0px, 0px, 0px, 2px, white;
+        border: 2px solid white;
     }
     
     button:focus {
         box-shadow: none;
     }
     button:hover {
-        box-shadow: inset 0px 0px 0px 1px $bg_primary;
+        box-shadow: inset 0px 0px 0px 2px $bg_primary;
         color: #FFFFFF;
     }
