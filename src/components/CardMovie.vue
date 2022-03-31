@@ -13,7 +13,10 @@
           >
         </div>
         <!-- card back -->
-        <div class="card_back position-absolute styled-scrollbars bg-dark">
+        <div class="card_back position-absolute styled-scrollbars bg-dark"
+        @click="cardClicked = true" @keydown="cardClicked = !cardClicked"
+        @mouseleave="cardClicked = false" @focusout="cardClicked = false"
+        :class="cardClicked ? 'overflowY-auto' : 'overflowY-hidden'">
           <!-- title -->
           <h2 class="title pb-3">{{ movieFiltered.title }}</h2>
           <!-- language -->
@@ -55,6 +58,7 @@
             :id="movieRating >= 5 ? 'gold-star5' : 'empty-star'"
             :icon="movieRating >= 5 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
           </div>
+          <!-- overview -->
           <div class="overview">
             <span class="fw-bold">Overview: </span>
             <span>{{ movieFiltered.overview }}</span>
@@ -115,6 +119,7 @@ export default {
         'uz',
         'vi',
       ],
+      cardClicked: false,
     };
   },
   methods: {
@@ -133,4 +138,11 @@ export default {
   @import '../assets/styles/partials/card--transition.scss';
   @import '../assets/styles/partials/scrollbar--style.scss';
   @import '../assets/styles/partials/stars-rating.scss';
+
+  .overflowY-auto {
+    overflow-y: auto!important;
+  }
+  .overflowY-hidden {
+    overflow-y: hidden!important;
+  }
 </style>
