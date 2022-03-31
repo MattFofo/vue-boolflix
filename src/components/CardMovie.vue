@@ -21,7 +21,7 @@
         <div ref="CardBack" class="card_back position-absolute styled-scrollbars bg-dark"
         @click="cardClicked = true" @keydown="cardClicked = !cardClicked"
         @mouseleave="cardClicked = false" @focusout="cardClicked = false"
-        :class="cardClicked ? 'overflowY-auto' : 'overflowY-hidden'"
+        :class="cardClicked ? 'overflow-auto' : 'overflow-hidden'"
         >
           <!-- title -->
           <h2 class="title pb-3">{{ movieFiltered.title }}</h2>
@@ -145,11 +145,4 @@ export default {
   @import '../assets/styles/partials/card--transition.scss';
   @import '../assets/styles/partials/scrollbar--style.scss';
   @import '../assets/styles/partials/stars-rating.scss';
-
-  .overflowY-auto {
-    overflow-y: auto!important;
-  }
-  .overflowY-hidden {
-    overflow-y: hidden!important;
-  }
 </style>
