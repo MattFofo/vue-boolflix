@@ -1,9 +1,11 @@
 <template>
   <header class="bg-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <h1 class="text-danger">BOOLFLIX</h1>
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-6 h-100">
+          <div class="h-100 d-flex align-items-center">
+            <h1 class="text-danger">BOOLFLIX</h1>
+          </div>
         </div>
         <div class="col-6">
           <form @submit.prevent="$emit('search-init', strSearchFromUser)" action=""
@@ -16,7 +18,13 @@
               class="me-2"
               placeholder="Inserisci un titolo...">
             </label>
-            <button class="btn ">CERCA</button>
+            <button class="btn d-flex justify-content-center">
+              <font-awesome-icon class="d-block d-sm-block d-md-none d-lg-none d-xl-none"
+              icon="fa-solid fa-magnifying-glass" />
+              <span class="d-none d-sm-none d-md-block d-lg-block d-xl-block text-center">
+                CERCA
+              </span>
+            </button>
           </form>
         </div>
       </div>
@@ -38,4 +46,7 @@ export default {
 <style scoped lang="scss">
   @import '../assets/styles/partials/variables';
   @import '../assets/styles/partials/button-header';
+  header {
+    height: $height_header;
+  }
 </style>

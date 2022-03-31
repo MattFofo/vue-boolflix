@@ -2,7 +2,7 @@ import FlagIcon from 'vue-flag-icon';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
-import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as fasStar, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import LangFlag from 'vue-lang-code-flags';
@@ -10,7 +10,7 @@ import LangFlag from 'vue-lang-code-flags';
 import Vue from 'vue';
 import App from './App.vue';
 
-library.add(farStar, fasStar);
+library.add(farStar, fasStar, faMagnifyingGlass);
 
 Vue.component('lang-flag', LangFlag);
 

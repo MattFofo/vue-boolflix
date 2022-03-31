@@ -1,7 +1,6 @@
 button {
     position: relative;
     background-color: $bg_btn_dark;
-    border: none;
     color: #FFFFFF;
     text-align: center;
     -webkit-transition-duration: 0.5s; /* Safari */
@@ -11,6 +10,7 @@ button {
     overflow: hidden;
     cursor: pointer;
     border: 2px solid transparent;
+    min-width: 32px;
   }
   
   button:after {

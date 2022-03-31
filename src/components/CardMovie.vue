@@ -3,9 +3,11 @@
     <div class="card_my">
       <div class="card_content position-relative">
         <!-- card front -->
-        <div @mouseleave="resetScrollTop()"
-        @focusout="this.$refs.scroll.scrollTop = 0"
-        class="card_front">
+        <div
+        @mouseleave="resetScrollTop()"
+        @focusout="resetScrollTop()"
+        class="card_front"
+        >
           <!-- poster -->
           <img
           :src="'https://image.tmdb.org/t/p/w342' + movieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
@@ -16,7 +18,7 @@
           >
         </div>
         <!-- card back -->
-        <div ref="scroll" class="card_back position-absolute styled-scrollbars bg-dark"
+        <div ref="CardBack" class="card_back position-absolute styled-scrollbars bg-dark"
         @click="cardClicked = true" @keydown="cardClicked = !cardClicked"
         @mouseleave="cardClicked = false" @focusout="cardClicked = false"
         :class="cardClicked ? 'overflowY-auto' : 'overflowY-hidden'"
@@ -50,8 +52,8 @@
             <!-- stars -->
             <font-awesome-icon
             v-for="i in 5" :key="i"
-            :id="movieRating >= i ? `gold-star${i}` : 'empty-star'"
-            :icon="movieRating >= i ? 'fa-solid fa-star' : 'fa-regular fa-star'"
+            :id="getStarsRating() >= i ? `gold-star${i}` : 'empty-star'"
+            :icon="getStarsRating() >= i ? 'fa-solid fa-star' : 'fa-regular fa-star'"
             />
           </div>
           <!-- overview -->
@@ -74,7 +76,6 @@ export default {
   },
   data() {
     return {
-      movieRating: this.movieFiltered.vote_average * 0.5,
       arrISO631Flags: [
         'ar',
         'am',
@@ -126,8 +127,14 @@ export default {
     },
     resetScrollTop() {
       if (this.cardClicked === false) {
-        this.$refs.scroll.scrollTop = 0;
+        this.$refs.CardBack.scrollTop = 0;
       }
+    },
+    getStarsRating() {
+      if (this.movieFiltered.vote_average >= 7) {
+        return Math.ceil(this.movieFiltered.vote_average * 0.5);
+      }
+      return Math.floor(this.movieFiltered.vote_average * 0.5);
     },
   },
 };
