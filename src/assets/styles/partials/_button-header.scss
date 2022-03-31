@@ -1,0 +1,46 @@
+button {
+    position: relative;
+    background-color: $bg_btn_dark;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    transition: border, box-shadow 0.6s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  
+  button:after {
+    content: "";
+    background: $bg_secondary;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -100px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.9s
+  }
+  
+  button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+    }
+    button:active {
+        box-shadow: 0px, 0px, 0px, 1px, white;
+        border: 1px solid white;
+    }
+    
+    button:focus {
+        box-shadow: none;
+    }
+    button:hover {
+        box-shadow: inset 0px 0px 0px 1px $bg_primary;
+        color: #FFFFFF;
+    }

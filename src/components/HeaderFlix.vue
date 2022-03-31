@@ -16,7 +16,7 @@
               class="me-2"
               placeholder="Inserisci un titolo...">
             </label>
-            <button class="btn btn-dark btn-outline-light">CERCA</button>
+            <button class="btn ">CERCA</button>
           </form>
         </div>
       </div>
@@ -37,50 +37,5 @@ export default {
 
 <style scoped lang="scss">
   @import '../assets/styles/partials/variables';
-  // button:active {
-  //   background-color: black;
-  //   color: white;
-  //   transition-property: background-color;
-  //   transition-duration: .2s;
-  //   transition-timing-function: ease-in-out;
-  // }
-  button {
-  position: relative;
-  background-color: $bg_btn_dark;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  -webkit-transition-duration: 0.5s; /* Safari */
-  transition-duration: 0.5s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-button:after {
-  content: "";
-  background: $bg_secondary;
-  display: block;
-  position: absolute;
-  padding-top: 300%;
-  padding-left: 350%;
-  margin-left: -100px!important;
-  margin-top: -120%;
-  opacity: 0;
-  transition: all 0.9s
-}
-
-button:active:after {
-  padding: 0;
-  margin: 0;
-  opacity: 1;
-  transition: 0s
-}
-
-button:focus {
-  box-shadow: none;
-  background-color: $bg_btn_dark;
-  color: white;
-}
-
+  @import '../assets/styles/partials/button-header';
 </style>

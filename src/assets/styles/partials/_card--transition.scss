@@ -43,15 +43,26 @@
         visibility: hidden;
         transform: translateX(300px);
         transition-property: transform, visibility;
-        transition-duration: .7s;
+        transition-duration: .8s;
         transition-timing-function: ease-in-out;
         //safari
         -webkit-transform: translateX(300px);
         -webkit-transition-property: transform, visibility;
-        -webkit-transition-duration: .7s;
+        -webkit-transition-duration: .8s;
         -webkit-transition-timing-function: ease-in-out;
       }
       .lang {
+        transform: translateX(-300px);
+        transition-property: transform, visibility;
+        transition-duration: .7s;
+        transition-timing-function: ease-in-out;
+        //safari
+        -webkit-transform: translateX(-300px);
+        -webkit-transition-property: transform, visibility;
+        -webkit-transition-duration: .7s;
+        -webkit-transition-timing-function: ease-in-out;        
+      }
+      .original_title {
         transform: translateX(-300px);
         transition-property: transform, visibility;
         transition-duration: .7s;
@@ -104,6 +115,10 @@
   .card_my:hover .lang, .card_my:hover .rating {
     transform: translateX(0);
     transition-delay: .6s;
+  }
+  .card_my:hover .original_title {
+    transform: translateX(0);
+    transition-delay: .8s;
   }
   .card_my:hover .overview {
     transform: translateY(0);
