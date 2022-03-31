@@ -1,42 +1,74 @@
 <template>
-  <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-    <div class="card card-serie">
-      <img
-      :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
-      ? 'https://picsum.photos/200/300'
-      : 'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path"
-      :alt="serieFiltered.title"
-      class="img-fluid"
-      >
-      <h2>{{ serieFiltered.name }}</h2>
-      <div>
-        Lingua Originale:
-        <lang-flag v-show="!controlFlagsIncluded(serieFiltered.original_language)"
-        :squared="false" :iso="serieFiltered.original_language" />
-        <span v-show="controlFlagsIncluded(serieFiltered.original_language)">
-          {{ serieFiltered.original_language }}
-        </span>
-      </div>
-      <div>
-        Paese produzione:
-        <flag :squared="false" style="font-size:1rem" :iso="serieFiltered.origin_country[0]" />
-      </div>
-      <div v-if="serieFiltered.original_name != serieFiltered.name">
-        Titolo Originale: {{ serieFiltered.original_name }}
-      </div>
-      <div>
-        Voto: {{ serieFiltered.vote_average }}
-        <font-awesome-icon :icon="serieRating >= 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-        <font-awesome-icon :icon="serieRating >= 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-        <font-awesome-icon :icon="serieRating >= 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-        <font-awesome-icon :icon="serieRating >= 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-        <font-awesome-icon :icon="serieRating >= 5 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+  <div class="col-6 col-sm-4 col-md-4 col-lg-3 py-4">
+    <div class="card_my">
+      <div class="card_content position-relative">
+        <!-- card front -->
+        <div
+        @mouseleave="resetScrollTop()"
+        @focusout="resetScrollTop()"
+        class="card_front"
+        >
+          <!-- poster -->
+          <img
+          :src="'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path == 'https://image.tmdb.org/t/p/w342null'
+          ? 'https://picsum.photos/342/500'
+          : 'https://image.tmdb.org/t/p/w342' + serieFiltered.poster_path"
+          :alt="serieFiltered.title"
+          class="img-fluid"
+          >
+        </div>
+        <!-- card back -->
+        <div ref="CardBack" class="card_back position-absolute styled-scrollbars bg-dark"
+        @click="cardClicked = true" @keydown="cardClicked = !cardClicked"
+        @mouseleave="cardClicked = false" @focusout="cardClicked = false"
+        :class="cardClicked ? 'overflow-auto' : 'overflow-hidden'"
+        >
+          <!-- title -->
+          <h2 class="title pb-3">{{ serieFiltered.name }}</h2>
+          <!-- language -->
+          <div class="lang pb-2">
+            <span class="lang-text fw-bold">Lingua Originale: </span>
+            <!-- language flag -->
+            <lang-flag v-show="!controlFlagsIncluded(serieFiltered.original_language)"
+            :squared="false" :iso="serieFiltered.original_language"
+            />
+            <!-- control if missing flag -->
+            <span v-show="controlFlagsIncluded(serieFiltered.original_language) ">
+              {{ serieFiltered.original_language }}
+            </span>
+          </div>
+          <!-- original title -->
+          <div class="original_title pb-1"
+          v-if="serieFiltered.original_title != serieFiltered.name"
+          >
+            <span class="fw-bold">Titolo Originale: </span>
+            <span> {{ serieFiltered.original_title }} </span>
+          </div>
+          <!-- rating -->
+          <div class="rating pb-1">
+            <!-- dex rating -->
+            <span class="fw-bold">Voto: </span>
+            <span> {{ serieFiltered.vote_average }} </span>
+            <!-- stars -->
+            <font-awesome-icon
+            v-for="i in 5" :key="i"
+            :id="getStarsRating() >= i ? `gold-star${i}` : 'empty-star'"
+            :icon="getStarsRating() >= i ? 'fa-solid fa-star' : 'fa-regular fa-star'"
+            />
+          </div>
+          <!-- overview -->
+          <div class="overview">
+            <span class="fw-bold">Overview: </span>
+            <span>{{ serieFiltered.overview }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'CardSerie',
   props: {
@@ -44,7 +76,6 @@ export default {
   },
   data() {
     return {
-      serieRating: this.serieFiltered.vote_average * 0.5,
       arrISO631Flags: [
         'ar',
         'am',
@@ -84,6 +115,7 @@ export default {
         'uz',
         'vi',
       ],
+      cardClicked: false,
     };
   },
   methods: {
@@ -93,10 +125,24 @@ export default {
       }
       return false;
     },
+    resetScrollTop() {
+      if (this.cardClicked === false) {
+        this.$refs.CardBack.scrollTop = 0;
+      }
+    },
+    getStarsRating() {
+      if (this.serieFiltered.vote_average >= 7) {
+        return Math.ceil(this.serieFiltered.vote_average * 0.5);
+      }
+      return Math.floor(this.serieFiltered.vote_average * 0.5);
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
-
+  @import '../assets/styles/partials/variables.scss';
+  @import '../assets/styles/partials/card--transition.scss';
+  @import '../assets/styles/partials/scrollbar--style.scss';
+  @import '../assets/styles/partials/stars-rating.scss';
 </style>
