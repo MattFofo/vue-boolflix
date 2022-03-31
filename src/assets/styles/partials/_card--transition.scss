@@ -1,4 +1,7 @@
 .card_my {
+  .fa-solid .fa-star{
+    color: gold!important;
+  }
     background-color: transparent;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     -webkit-perspective: 1000px; 
@@ -48,6 +51,39 @@
         -webkit-transition-duration: .7s;
         -webkit-transition-timing-function: ease-in-out;
       }
+      .lang {
+        transform: translateX(-300px);
+        transition-property: transform, visibility;
+        transition-duration: .7s;
+        transition-timing-function: ease-in-out;
+        //safari
+        -webkit-transform: translateX(-300px);
+        -webkit-transition-property: transform, visibility;
+        -webkit-transition-duration: .7s;
+        -webkit-transition-timing-function: ease-in-out;        
+      }
+      .rating {
+        transform: translateX(300px);
+        transition-property: transform, visibility;
+        transition-duration: .7s;
+        transition-timing-function: ease-in-out;
+        //safari
+        -webkit-transform: translateX(300px);
+        -webkit-transition-property: transform, visibility;
+        -webkit-transition-duration: .7s;
+        -webkit-transition-timing-function: ease-in-out;        
+      }
+      .overview {
+        transform: translateY(300px);
+        transition-property: transform, visibility;
+        transition-duration: .7s;
+        transition-timing-function: ease-in-out;
+        //safari
+        -webkit-transform: translateY(300px);
+        -webkit-transition-property: transform, visibility;
+        -webkit-transition-duration: .7s;
+        -webkit-transition-timing-function: ease-in-out;        
+      }
     }
   }
   .card_my:hover .card_content{
@@ -64,4 +100,15 @@
   .card_my:hover .title {
     transform: translateX(0);
     visibility: visible;
+  }
+  .card_my:hover .lang, .card_my:hover .rating {
+    transform: translateX(0);
+    transition-delay: .6s;
+  }
+  .card_my:hover .overview {
+    transform: translateY(0);
+    transition-delay: .8s;
+  }
+  .card_back:hover .fa-solid .fa-star {
+    color: gold;
   }

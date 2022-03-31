@@ -8,7 +8,7 @@
     <div v-if="missingData == true">Non sono riuscito a prendere i dati dal server</div>
     <div class="container">
       <div class="movies">
-        <h2 v-show="moviesFiltered != null" class="text-white">MOVIES</h2>
+        <h2 v-show="moviesFiltered != null" class="text-white pt-4">MOVIES</h2>
         <div v-if="moviesFiltered == ''">nessun risultato</div>
         <div class="row py-5">
             <CardMovie

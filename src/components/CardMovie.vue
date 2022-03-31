@@ -15,10 +15,10 @@
         <!-- card back -->
         <div class="card_back position-absolute styled-scrollbars bg-dark">
           <!-- title -->
-          <h2 class="title">{{ movieFiltered.title }}</h2>
+          <h2 class="title pb-3">{{ movieFiltered.title }}</h2>
           <!-- language -->
-          <div class="lang">
-            Lingua Originale:
+          <div class="lang pb-2">
+            <span class="lang-text fw-bold">Lingua Originale: </span>
             <lang-flag v-show="!controlFlagsIncluded(movieFiltered.original_language)"
             :squared="false" :iso="movieFiltered.original_language" />
             <span v-show="controlFlagsIncluded(movieFiltered.original_language) ">
@@ -26,24 +26,39 @@
             </span>
           </div>
           <!-- original title -->
-          <div class="original_title" v-if="movieFiltered.original_title != movieFiltered.title">
-            Titolo Originale: {{ movieFiltered.original_title }}
+          <div class="original_title pb-1"
+          v-if="movieFiltered.original_title != movieFiltered.title">
+            <span class="fw-bold">Titolo Originale: </span>
+            <span> {{ movieFiltered.original_title }} </span>
           </div>
           <!-- rating -->
-          <div class="rating">
-            Voto: {{ movieFiltered.vote_average }}
-            <font-awesome-icon :icon="movieRating >= 1
-              ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-            <font-awesome-icon :icon="movieRating >= 2
-              ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-            <font-awesome-icon :icon="movieRating >= 3
-              ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-            <font-awesome-icon :icon="movieRating >= 4
-              ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
-            <font-awesome-icon :icon="movieRating >= 5
-              ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+          <div class="rating pb-1">
+            <span class="fw-bold">Voto: </span>
+            <span> {{ movieFiltered.vote_average }} </span>
+            <font-awesome-icon
+            :id="movieRating >= 1 ? 'gold-star1' : 'empty-star'"
+            :icon="movieRating >= 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'"
+            />
+            <font-awesome-icon
+            :id="movieRating >= 2 ? 'gold-star2' : 'empty-star'"
+            :icon="movieRating >= 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+
+            <font-awesome-icon
+            :id="movieRating >= 3 ? 'gold-star3' : 'empty-star'"
+            :icon="movieRating >= 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+
+            <font-awesome-icon
+            :id="movieRating >= 4 ? 'gold-star4' : 'empty-star'"
+            :icon="movieRating >= 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+
+            <font-awesome-icon
+            :id="movieRating >= 5 ? 'gold-star5' : 'empty-star'"
+            :icon="movieRating >= 5 ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
           </div>
-          <div class="overview">{{ movieFiltered.overview }}</div>
+          <div class="overview">
+            <span class="fw-bold">Overview: </span>
+            <span>{{ movieFiltered.overview }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +129,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import '../assets/styles/partials/variables.scss';
   @import '../assets/styles/partials/card--transition.scss';
   @import '../assets/styles/partials/scrollbar--style.scss';
+  @import '../assets/styles/partials/stars-rating.scss';
 </style>
