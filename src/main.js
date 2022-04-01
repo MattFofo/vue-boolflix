@@ -1,5 +1,3 @@
-import FlagIcon from 'vue-flag-icon';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -15,8 +13,6 @@ library.add(farStar, fasStar, faMagnifyingGlass);
 Vue.component('lang-flag', LangFlag);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-
-Vue.use(FlagIcon);
 
 Vue.config.productionTip = false;
 
